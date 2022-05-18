@@ -179,7 +179,7 @@ myLinkedList3.insert(1, "4");
 myLinkedList3.print();
 console.log("Fifth insertion");
 myLinkedList3.insert(3, "5");
-myLinkedList3.print();
+myLinkedList3.print(); 
 myLinkedList3.insert(4, "insert without head node.");
 myLinkedList3.print();
 
