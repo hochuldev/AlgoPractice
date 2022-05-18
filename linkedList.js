@@ -13,6 +13,35 @@ LinkedList.prototype.isEmpty = function() {
     return this.head == null || undefined ? true : false;
 }
 
+LinkedList.prototype.indexOf = function (data) {
+    return this.indexOfImplementation( data, this.head, 0 );
+}
+
+LinkedList.prototype.indexOfImplementation = function ( data, currentNode, currentIndex ) {
+    const isDataValid = data != null ;
+    
+    if ( !isDataValid ){
+        throw new Error("Data cannot be null or undefined.");
+        return;
+    } // exit if the data is invalid.
+    
+    if ( this.isEmpty() ) return -1; // when the linked list is empty, nothing can be found. Thus, returning -1.
+    
+    const nextNode = currentNode.next;
+    const isTraversable = nextNode != null;
+    const isFoundInCurrentNode = currentNode.data == data;
+    
+    if( isFoundInCurrentNode ) return currentIndex; // base case. The currentNode holds the data that one is looking for. Thus, returning the index of the current node.
+
+    if( isTraversable ){ // recursive case.
+        let returnedIndex = this.indexOfImplementation( data, nextNode, currentIndex+1 ); // The returned index is greater than or equal to 0 if some descendant of the current node holds the data.
+        if( returnedIndex >= 0 ) return returnedIndex;
+        return -1; // The current node and its "descendants" do not hold the data. Thus returning -1.
+    }
+    
+    if( !isTraversable ) return -1; // second base case. The method has searched the entire linked list and could not find the data.
+}
+
 LinkedList.prototype.print = function () {
     this.printImplementation(this.head);
 }
@@ -110,13 +139,6 @@ LinkedList.prototype.remove = function () {
     this.length--;
 }
 
-LinkedList.prototype.removeElement = function ( currentNode ) {
-    if( this.head == null ) { //특이한 input에 대응하는 케이스
-        console.log("There is no head node.");
-        return;
-    }
-}
-
 LinkedList.prototype.removeFrom = function ( index ) {
     let currentNode = this.head;
     let previousNode = currentNode;
@@ -141,18 +163,31 @@ LinkedList.prototype.removeFrom = function ( index ) {
 }
 
 
-
-
-
-
-
-
-
 /*
-let myLinkedList = new LinkedList();
-myLinkedList.append("this is my new node");
+const myLinkedList = new LinkedList();
+myLinkedList.append(0);
+myLinkedList.append(15);
+myLinkedList.append(24);
+myLinkedList.append(3336);
 
-myLinkedList.print();
+const myLinkedList5 = new LinkedList();
+
+
+console.log(myLinkedList.indexOf( 0 ));
+console.log(myLinkedList.indexOf( 15 ));
+console.log(myLinkedList.indexOf( 24 ));
+console.log(myLinkedList.indexOf( 3336 ));
+console.log(myLinkedList.indexOf( 234 ));
+console.log(myLinkedList.indexOf( 12 ));
+console.log(myLinkedList.indexOf( 14 ));
+console.log(myLinkedList5.indexOf(254));
+console.log(myLinkedList5.indexOf(3));
+console.log(myLinkedList5.indexOf(0));
+
+let myLinkedList1 = new LinkedList();
+myLinkedList1.append("this is my new node");
+
+myLinkedList1.print();
 
 let myLinkedList2 = new LinkedList();
 myLinkedList2.append("blah");
