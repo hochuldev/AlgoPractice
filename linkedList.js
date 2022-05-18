@@ -17,11 +17,38 @@ LinkedList.prototype.print = function () {
     this.printImplementation(this.head);
 }
 
+LinkedList.prototype.printImplementation = function ( currentNode ) {
+    
+    if( this.head == null ){
+        console.log("There is no data in this linked list.");
+        return;
+    }
+
+    console.log(currentNode.data);
+    let nextNode = currentNode.next;
+
+    if(nextNode != null) {
+        this.printImplementation(nextNode);
+    }
+}
+
 LinkedList.prototype.append = function( data ) {
     let currentNode = this.head;
     let newNode = new Node(data);
     this.appendImplementation( currentNode, newNode );
     this.length++;
+}
+
+LinkedList.prototype.appendImplementation = function( currentNode, newNode ){
+    
+    if( currentNode == null ){ // 특이한 input에 대응하는 케이스. recursive/base case가 아님.
+        this.head = newNode;
+        return;
+    }
+    let nextNode = currentNode.next;
+    if( nextNode != null ){ // recursive case
+        this.appendImplementation(nextNode, newNode);
+    }else currentNode.next = newNode; // base case: LinkedList에 head node밖에 없는 상태.
 }
 
 LinkedList.prototype.insert = function ( index, data ) {
@@ -114,34 +141,11 @@ LinkedList.prototype.removeFrom = function ( index ) {
 }
 
 
-LinkedList.prototype.printImplementation = function ( currentNode ) {
-    
-    if( this.head == null ){
-        console.log("There is no data in this linked list.");
-        return;
-    }
-
-    console.log(currentNode.data);
-    let nextNode = currentNode.next;
-
-    if(nextNode != null) {
-        this.printImplementation(nextNode);
-    }
-}
 
 
 
-LinkedList.prototype.appendImplementation = function( currentNode, newNode ){
-    
-    if( currentNode == null ){ // 특이한 input에 대응하는 케이스. recursive/base case가 아님.
-        this.head = newNode;
-        return;
-    }
-    let nextNode = currentNode.next;
-    if( nextNode != null ){ // recursive case
-        this.appendImplementation(nextNode, newNode);
-    }else currentNode.next = newNode; // base case: LinkedList에 head node밖에 없는 상태.
-}
+
+
 
 
 /*
