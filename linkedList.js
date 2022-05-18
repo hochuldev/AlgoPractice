@@ -48,7 +48,7 @@ LinkedList.prototype.print = function () {
 
 LinkedList.prototype.printImplementation = function ( currentNode ) {
     
-    if( this.head == null ){
+    if( this.isEmpty() ){
         console.log("There is no data in this linked list.");
         return;
     }
