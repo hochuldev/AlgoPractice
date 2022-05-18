@@ -145,47 +145,48 @@ LinkedList.prototype.appendImplementation = function( currentNode, newNode ){
 
 
 
-// let myLinkedList = new LinkedList();
-// myLinkedList.head = new Node( "This is the head node of the linked list" );
-// myLinkedList.head.next = new Node("This is the second node");
-// myLinkedList.head.next.next = new Node("This is the third node");
+let myLinkedList = new LinkedList();
+myLinkedList.head = new Node( "This is the head node of the linked list" );
+myLinkedList.head.next = new Node("This is the second node");
+myLinkedList.head.next.next = new Node("This is the third node");
 
-// myLinkedList.append("this is my new node");
+myLinkedList.append("this is my new node");
 
-// myLinkedList.print();
+myLinkedList.print();
 
-// let myLinkedList2 = new LinkedList();
-// myLinkedList2.append("blah");
-// myLinkedList2.append("yay");
+let myLinkedList2 = new LinkedList();
+myLinkedList2.append("blah");
+myLinkedList2.append("yay");
 
-// myLinkedList2.insert(1, "insert test");
+myLinkedList2.insert(1, "insert test");
 
-// myLinkedList2.print();
+myLinkedList2.print();
 
 
-// myLinkedList2.removeFrom(1);
+myLinkedList2.removeFrom(1);
 
-// myLinkedList2.print();
+myLinkedList2.print();
 
-// let myLinkedList3 = new LinkedList();
-// // myLinkedList3.append("The head node");
-// console.log("First insertion");
-// myLinkedList3.insert(5, "1");
-// myLinkedList3.print();
-// console.log("Second insertion");
-// myLinkedList3.insert(5, "2");
-// myLinkedList3.print();
-// console.log("Third insertion");
-// myLinkedList3.insert(2, "3");
-// myLinkedList3.print();
-// console.log("Fourth insertion");
-// myLinkedList3.insert(1, "4");
-// myLinkedList3.print();
-// console.log("Fifth insertion");
-// myLinkedList3.insert(3, "5");
-// myLinkedList3.print();
-// // myLinkedList3.insert(4, "insert without head node.");
-// // myLinkedList3.print();
+/*
+let myLinkedList3 = new LinkedList();
+myLinkedList3.append("The head node");
+console.log("First insertion");
+myLinkedList3.insert(5, "1");
+myLinkedList3.print();
+console.log("Second insertion");
+myLinkedList3.insert(5, "2");
+myLinkedList3.print();
+console.log("Third insertion");
+myLinkedList3.insert(2, "3");
+myLinkedList3.print();
+console.log("Fourth insertion");
+myLinkedList3.insert(1, "4");
+myLinkedList3.print();
+console.log("Fifth insertion");
+myLinkedList3.insert(3, "5");
+myLinkedList3.print();
+myLinkedList3.insert(4, "insert without head node.");
+myLinkedList3.print();
 
 let myLinkedList4 = new LinkedList();
 myLinkedList4.append(1);
@@ -193,12 +194,13 @@ myLinkedList4.append(2);
 myLinkedList4.append(3);
 myLinkedList4.append(4);
 
-// myLinkedList4.insert(0, "First element");
-// myLinkedList4.insert(1, " Second Element");
-// myLinkedList4.insert(2, "Third element");
-// myLinkedList4.insert(3, "Fourth element");
+myLinkedList4.insert(0, "First element");
+myLinkedList4.insert(1, " Second Element");
+myLinkedList4.insert(2, "Third element");
+myLinkedList4.insert(3, "Fourth element");
 myLinkedList4.insert(4, "Fifth element");
 myLinkedList4.insert(10, "last element");
 myLinkedList4.insert("34", "blahbalh");
 
 myLinkedList4.print();
+*/
