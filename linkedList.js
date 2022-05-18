@@ -144,12 +144,8 @@ LinkedList.prototype.appendImplementation = function( currentNode, newNode ){
 }
 
 
-
+/*
 let myLinkedList = new LinkedList();
-myLinkedList.head = new Node( "This is the head node of the linked list" );
-myLinkedList.head.next = new Node("This is the second node");
-myLinkedList.head.next.next = new Node("This is the third node");
-
 myLinkedList.append("this is my new node");
 
 myLinkedList.print();
@@ -167,7 +163,6 @@ myLinkedList2.removeFrom(1);
 
 myLinkedList2.print();
 
-/*
 let myLinkedList3 = new LinkedList();
 myLinkedList3.append("The head node");
 console.log("First insertion");
