@@ -34,8 +34,8 @@ LinkedList.prototype.indexOfImplementation = function ( data, currentNode, curre
     if( isFoundInCurrentNode ) return currentIndex; // base case. The currentNode holds the data that one is looking for. Thus, returning the index of the current node.
 
     if( isTraversable ){ // recursive case.
-        let returnedIndex = this.indexOfImplementation( data, nextNode, currentIndex+1 ); // The returned index is greater than or equal to 0 if some descendant of the current node holds the data.
-        if( returnedIndex >= 0 ) return returnedIndex;
+        let returnedIndex = this.indexOfImplementation( data, nextNode, currentIndex+1 ); 
+        if( returnedIndex >= 0 ) return returnedIndex; // The returned index is greater than or equal to 0 if some descendant of the current node holds the data.
         return -1; // The current node and its "descendants" do not hold the data. Thus returning -1.
     }
     
