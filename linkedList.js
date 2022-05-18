@@ -63,7 +63,7 @@ LinkedList.prototype.insertInOtherCases = function( index, data ) {
     let previousNode;
     const newNode = new Node(data);
     index = index < this.length ? index : this.length; // to avoid the situation that access some node's null property.
-                                                           // if the index is greater than the length, then we just insert the new node at the end of the linked list.
+                                                           // if the index is greater than or equal to the length, then we just insert the new node at the end of the linked list.
     for ( let i = 0; i < index; i++ ) {
         previousNode = currentNode;
         currentNode = currentNode.next;
