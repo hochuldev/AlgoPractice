@@ -17,7 +17,7 @@ LinkedList.prototype.indexOf = function (data) {
     return this.indexOfImplementation( data, this.head, 0 );
 }
 
-LinkedList.prototype.indexOfImplementation = function ( data, currentNode, currentIndex ) { // returns -1 if the data is not found. if the data is found, retruns the index of the node that holds the data.
+LinkedList.prototype.indexOfImplementation = function ( data, currentNode, currentIndex ) { // returns -1 if the data is not found. if the data is found, returns the index of the node that holds the data.
     const isDataValid = data != null ;
     
     if ( !isDataValid ){
