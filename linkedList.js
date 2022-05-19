@@ -54,9 +54,10 @@ LinkedList.prototype.printImplementation = function ( currentNode ) {
     }
 
     console.log(currentNode.data);
-    let nextNode = currentNode.next;
+    const nextNode = currentNode.next;
+    const isTraversable = nextNode != undefined;
 
-    if(nextNode != undefined) {
+    if(isTraversable) {
         this.printImplementation(nextNode);
     }
 }
@@ -120,7 +121,7 @@ LinkedList.prototype.insertInOtherCases = function( index, data ) {
     let previousNode;
     const newNode = new Node(data);
     index = index < this.length ? index : this.length; // to avoid the situation that access some node's undefined property.
-                                                           // if the index is greater than or equal to the length, then we just insert the new node at the end of the linked list.
+                                                       // if the index is greater than or equal to the length, then we just insert the new node at the end of the linked list.
     for ( let i = 0; i < index; i++ ) {
         previousNode = currentNode;
         currentNode = currentNode.next;
@@ -164,78 +165,75 @@ LinkedList.prototype.removeFrom = function ( index ) {
 }
 
 
-/*
+
 const myLinkedList = new LinkedList();
+myLinkedList.append(12);
 myLinkedList.append(0);
-myLinkedList.append(15);
-myLinkedList.append(24);
-myLinkedList.append(3336);
+// myLinkedList.append(15);
+// myLinkedList.append(24);
+// myLinkedList.append(3336);
 
-const myLinkedList5 = new LinkedList();
+// console.log(myLinkedList.indexOf( 0 ));
+// console.log(myLinkedList.indexOf( 15 ));
+// console.log(myLinkedList.indexOf( 24 ));
+// console.log(myLinkedList.indexOf( 3336 ));
+// console.log(myLinkedList.indexOf( 234 ));
+// console.log(myLinkedList.indexOf( 12 ));
+// console.log(myLinkedList.indexOf( 14 ));
+// console.log(myLinkedList.indexOf(254));
+// console.log(myLinkedList.indexOf(3));
+// console.log(myLinkedList.indexOf(0));
 
+// let myLinkedList1 = new LinkedList();
+// myLinkedList1.append("this is my new node");
 
-console.log(myLinkedList.indexOf( 0 ));
-console.log(myLinkedList.indexOf( 15 ));
-console.log(myLinkedList.indexOf( 24 ));
-console.log(myLinkedList.indexOf( 3336 ));
-console.log(myLinkedList.indexOf( 234 ));
-console.log(myLinkedList.indexOf( 12 ));
-console.log(myLinkedList.indexOf( 14 ));
-console.log(myLinkedList5.indexOf(254));
-console.log(myLinkedList5.indexOf(3));
-console.log(myLinkedList5.indexOf(0));
+// myLinkedList1.print();
 
-let myLinkedList1 = new LinkedList();
-myLinkedList1.append("this is my new node");
+// let myLinkedList2 = new LinkedList();
+// myLinkedList2.append("blah");
+// myLinkedList2.append("yay");
 
-myLinkedList1.print();
+// myLinkedList2.insert(1, "insert test");
 
-let myLinkedList2 = new LinkedList();
-myLinkedList2.append("blah");
-myLinkedList2.append("yay");
-
-myLinkedList2.insert(1, "insert test");
-
-myLinkedList2.print();
+// myLinkedList2.print();
 
 
-myLinkedList2.removeFrom(1);
+// myLinkedList2.removeFrom(1);
 
-myLinkedList2.print();
+// myLinkedList2.print();
 
-let myLinkedList3 = new LinkedList();
-myLinkedList3.append("The head node");
-console.log("First insertion");
-myLinkedList3.insert(5, "1");
-myLinkedList3.print();
-console.log("Second insertion");
-myLinkedList3.insert(5, "2");
-myLinkedList3.print();
-console.log("Third insertion");
-myLinkedList3.insert(2, "3");
-myLinkedList3.print();
-console.log("Fourth insertion");
-myLinkedList3.insert(1, "4");
-myLinkedList3.print();
-console.log("Fifth insertion");
-myLinkedList3.insert(3, "5");
-myLinkedList3.print(); 
-myLinkedList3.insert(4, "insert without head node.");
-myLinkedList3.print();
+// let myLinkedList3 = new LinkedList();
+// myLinkedList3.append("The head node");
+// console.log("First insertion");
+// myLinkedList3.insert(5, "1");
+// myLinkedList3.print();
+// console.log("Second insertion");
+// myLinkedList3.insert(5, "2");
+// myLinkedList3.print();
+// console.log("Third insertion");
+// myLinkedList3.insert(2, "3");
+// myLinkedList3.print();
+// console.log("Fourth insertion");
+// myLinkedList3.insert(1, "4");
+// myLinkedList3.print();
+// console.log("Fifth insertion");
+// myLinkedList3.insert(3, "5");
+// myLinkedList3.print(); 
+// myLinkedList3.insert(4, "insert without head node.");
+// myLinkedList3.print();
 
-let myLinkedList4 = new LinkedList();
-myLinkedList4.append(1);
-myLinkedList4.append(2);
-myLinkedList4.append(3);
-myLinkedList4.append(4);
+// let myLinkedList4 = new LinkedList();
+// myLinkedList4.append(1);
+// myLinkedList4.append(2);
+// myLinkedList4.append(3);
+// myLinkedList4.append(4);
 
-myLinkedList4.insert(0, "First element");
-myLinkedList4.insert(1, " Second Element");
-myLinkedList4.insert(2, "Third element");
-myLinkedList4.insert(3, "Fourth element");
-myLinkedList4.insert(4, "Fifth element");
-myLinkedList4.insert(10, "last element");
-myLinkedList4.insert("34", "blahbalh");
+// myLinkedList4.insert(0, "First element");
+// myLinkedList4.insert(1, " Second Element");
+// myLinkedList4.insert(2, "Third element");
+// myLinkedList4.insert(3, "Fourth element");
+// myLinkedList4.insert(4, "Fifth element");
+// myLinkedList4.insert(10, "last element");
+// myLinkedList4.insert("34", "blahbalh");
 
-myLinkedList4.print();
-*/
+// myLinkedList4.print();
