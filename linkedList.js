@@ -1,16 +1,16 @@
 
 function LinkedList(){
     this.length = 0;
-    this.head = null;
+    this.head = undefined;
 }
 
 function Node( data ){
     this.data = data;
-    this.next = null;
+    this.next = undefined;
 }
 
 LinkedList.prototype.isEmpty = function() {
-    return this.head == null || undefined ? true : false;
+    return this.head == undefined || undefined ? true : false;
 }
 
 LinkedList.prototype.indexOf = function (data) {
@@ -18,17 +18,17 @@ LinkedList.prototype.indexOf = function (data) {
 }
 
 LinkedList.prototype.indexOfImplementation = function ( data, currentNode, currentIndex ) { // returns -1 if the data is not found. if the data is found, returns the index of the node that holds the data.
-    const isDataValid = data != null ;
+    const isDataValid = data != undefined ;
     
     if ( !isDataValid ){
-        throw new Error("Data cannot be null or undefined.");
+        throw new Error("Data cannot be undefined or undefined.");
         return;
     } // exit if the data is invalid.
     
     if ( this.isEmpty() ) return -1; // when the linked list is empty, nothing can be found. Thus, returning -1.
     
     const nextNode = currentNode.next;
-    const isTraversable = nextNode != null;
+    const isTraversable = nextNode != undefined;
     const isFoundInCurrentNode = currentNode.data == data;
     
     if( isFoundInCurrentNode ) return currentIndex; // base case. The currentNode holds the data that one is looking for. Thus, returning the index of the current node.
@@ -56,7 +56,7 @@ LinkedList.prototype.printImplementation = function ( currentNode ) {
     console.log(currentNode.data);
     let nextNode = currentNode.next;
 
-    if(nextNode != null) {
+    if(nextNode != undefined) {
         this.printImplementation(nextNode);
     }
 }
@@ -70,21 +70,21 @@ LinkedList.prototype.append = function( data ) {
 
 LinkedList.prototype.appendImplementation = function( currentNode, newNode ){
     
-    if( currentNode == null ){ // 특이한 input에 대응하는 케이스. recursive/base case가 아님.
+    if( currentNode == undefined ){ // 특이한 input에 대응하는 케이스. recursive/base case가 아님.
         this.head = newNode;
         return;
     }
     let nextNode = currentNode.next;
-    if( nextNode != null ){ // recursive case
+    if( nextNode != undefined ){ // recursive case
         this.appendImplementation(nextNode, newNode);
     }else currentNode.next = newNode; // base case: LinkedList에 head node밖에 없는 상태.
 }
 
 LinkedList.prototype.insert = function ( index, data ) {
     
-    const isIndexAndDataValid = (data != null && index >= 0 && typeof index == "number") ;
+    const isIndexAndDataValid = (data != undefined && index >= 0 && typeof index == "number") ;
     if ( !isIndexAndDataValid ){
-        throw new Error("index can only be a number greater than 0. Also, data cannot be null or undefined.");
+        throw new Error("index can only be a number greater than 0. Also, data cannot be undefined or undefined.");
         return;
     } // exit if the index or data is invalid.
     
@@ -118,7 +118,7 @@ LinkedList.prototype.insertInOtherCases = function( index, data ) {
     let currentNode = this.head;
     let previousNode;
     const newNode = new Node(data);
-    index = index < this.length ? index : this.length; // to avoid the situation that access some node's null property.
+    index = index < this.length ? index : this.length; // to avoid the situation that access some node's undefined property.
                                                            // if the index is greater than or equal to the length, then we just insert the new node at the end of the linked list.
     for ( let i = 0; i < index; i++ ) {
         previousNode = currentNode;
@@ -131,7 +131,7 @@ LinkedList.prototype.insertInOtherCases = function( index, data ) {
 }
 
 LinkedList.prototype.remove = function () {
-    if( this.head == null ){
+    if( this.head == undefined ){
         console.log("There is no head node.");
         return;
     }
@@ -143,13 +143,13 @@ LinkedList.prototype.removeFrom = function ( index ) {
     let currentNode = this.head;
     let previousNode = currentNode;
 
-    if( previousNode == null ) {
+    if( previousNode == undefined ) {
         console.log("There is no data at the index. Thus the function is terminated without deleting an element");
         return;
     }
 
     for( let i = 0; i < index; i++ ) {
-        if ( currentNode.next == null ) {
+        if ( currentNode.next == undefined ) {
             console.log(`There is no data at the index.`);
             return;
         }
