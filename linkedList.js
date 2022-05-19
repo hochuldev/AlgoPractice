@@ -70,14 +70,15 @@ LinkedList.prototype.append = function( data ) {
 
 LinkedList.prototype.appendImplementation = function( currentNode, newNode ){
     
-    if( currentNode == undefined ){ // 특이한 input에 대응하는 케이스. recursive/base case가 아님.
+    if( this.isEmpty() ){ // 특이한 input에 대응하는 케이스. recursive/base case가 아님.
         this.head = newNode;
         return;
     }
-    let nextNode = currentNode.next;
-    if( nextNode != undefined ){ // recursive case
+    const nextNode = currentNode.next;
+    const isTraversable = nextNode != undefined;
+    if( isTraversable ){ // recursive case
         this.appendImplementation(nextNode, newNode);
-    }else currentNode.next = newNode; // base case: LinkedList에 head node밖에 없는 상태.
+    }else currentNode.next = newNode; // base case: 다음 노드가 없는 상태.
 }
 
 LinkedList.prototype.insert = function ( index, data ) {
