@@ -20,8 +20,8 @@ function answer( orderOfPlates ) {
             }
         }
 
-        let poppedPlate = dishWasher[ dishWasher.length - 1 ];
-        if( plateToPop != poppedPlate ) {
+        let poppablePlate = dishWasher[ dishWasher.length - 1 ];
+        if( plateToPop != poppablePlate ) {
             return [];
         }
         dishWasher.pop();
