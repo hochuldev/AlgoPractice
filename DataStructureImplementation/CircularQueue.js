@@ -1,6 +1,6 @@
 
 function CircularQueue( size ) {
-    this.head = -1;
+    this.head = 0;
     this.size = size;
     this.array = [];
 }
@@ -17,8 +17,9 @@ CircularQueue.prototype.enqueue = function( data ) {
 }
 
 CircularQueue.prototype.dequeue = function() {
+    let elementToDequeue = this.array[this.head];
     this.head = ( this.head+1 ) % (this.array.length || this.size); // this.array.length = 0일 때, 0 % 0 = NAN이기에 오류가 생길 수 있음. 그래서, 해당 경우 this.size로 나누어서 나머지를 구함.
-    return this.array[this.head];
+    return elementToDequeue;
 }
 
 
