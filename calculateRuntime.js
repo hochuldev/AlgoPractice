@@ -1,9 +1,9 @@
 //shift와 unshift를 테스트하는거다.
 //createDataStructureOf
 
-function calculateRuntime() {
+function calculateRuntime( maxSize ) {
     
-    for( let i = 0; i < 1000; i++ ){
+    for( let i = 0; i < maxSize; i++ ){
         let queue = createQueueOfSizeN( i );
         let initialTime = new Date();
         queue.unshift(35);
@@ -21,4 +21,4 @@ function createQueueOfSizeN( N ) {
     return queue;
 }
 
-calculateRuntime();
+calculateRuntime(1000);
