@@ -1,4 +1,3 @@
-
 function Graph() {
     this.edges = new Map();
 }
@@ -34,6 +33,27 @@ Graph.prototype.print = function() {
     console.log( this.edges );
 }
 
+Graph.prototype.dfsImplementation = function( currentVertex, visitedVertices, action ) {
+    let hasVisited = visitedVertices.has( currentVertex ); 
+
+    if( hasVisited ) return // base case1: 이미 visit한 노드를 다시 방문할 경우, 그대로 backtrack해준다.
+    visitedVertices.set(currentVertex, 1);
+    action(currentVertex); // 이 라인은, base case1이 아니라면, base case와 recursive case 구분없이 실행해야 하는 라인이다. 그래서, 여기에 삽입함.
+
+    if( this.edges.get(currentVertex).length > 0 ){
+
+        for( let vertex of this.edges.get(currentVertex) ) { // recursive case: 아직 traverse할 노드가 있을 때.
+                this.dfsImplementation( vertex, visitedVertices, action );
+        }
+    }
+    
+}
+
+Graph.prototype.dfs = function( initialVertex, action ) {
+    let visitedVertices = new Map();
+    this.dfsImplementation( initialVertex, visitedVertices, action );
+}
+
 myGraph = new Graph();
 
 myGraph.addVertex("a");
@@ -41,13 +61,15 @@ myGraph.addVertex("c");
 myGraph.addVertex("g");
 myGraph.addVertex("b");
 
+myGraph.addEdge( "g", "c" );
+
 myGraph.addEdge("a", "g");
 myGraph.addEdge("a", "b");
 myGraph.addEdge("b", "a");
 myGraph.addEdge("c", "b");
 myGraph.addEdge("c","d");
-myGraph.removeEdge("c","b");
 
 
-myGraph.removeVertex("a");
-myGraph.print();
+myGraph.dfs( "a", (vertex) => {
+    console.log(vertex);
+} )
