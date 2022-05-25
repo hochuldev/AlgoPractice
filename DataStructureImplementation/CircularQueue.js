@@ -18,7 +18,7 @@ CircularQueue.prototype.enqueue = function( data ) {
 
 CircularQueue.prototype.dequeue = function() {
     let elementToDequeue = this.array[this.head];
-    this.head = ( this.head+1 ) % (this.array.length || this.size); // this.array.length = 0일 때, 0 % 0 = NAN이기에 오류가 생길 수 있음. 그래서, 해당 경우 this.size로 나누어서 나머지를 구함.
+    this.head = ( this.head+1 ) % ( this.array.length || 1 ); // this.array.length = 0일 때, number % 0 = NAN이기에 오류가 생길 수 있음. 그래서, 해당 경우 1로 나누어서 나머지를 구함.
     return elementToDequeue;
 }
 
@@ -39,13 +39,15 @@ CircularQueue.prototype.dequeue = function() {
 //     console.log( myCircularQueue2.dequeue() ); 
 // }
 
-// let myCircularQueue3 = new CircularQueue(3); // when the circular queue is empty.
-// for( let i = 0; i < 5; i++ ){
-//     console.log( myCircularQueue3.dequeue() ); 
-// }
+let myCircularQueue3 = new CircularQueue(3); // when the circular queue is empty.
+for( let i = 0; i < 5; i++ ){
+    console.log( myCircularQueue3.dequeue() ); 
+}
 
-// myCircularQueue3.enqueue(24);
-// console.log( myCircularQueue3.array );
-// for( let i = 0; i < 5; i++ ){
-//     console.log( myCircularQueue3.dequeue() ); 
-// }
+myCircularQueue3.enqueue(24);
+console.log( myCircularQueue3.array );
+for( let i = 0; i < 5; i++ ){
+    console.log( myCircularQueue3.dequeue() ); 
+}
+
+console.log( myCircularQueue3.array );
