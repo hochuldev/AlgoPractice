@@ -73,6 +73,27 @@ Graph.prototype.bfs = function( initialVertex, action ) {
     }
 }
 
+Graph.prototype.shortestPathDistance = function( initialVertex ) {
+    const queue = [ initialVertex ];
+    const visitedVertices = new Map();
+    let distance = new Map();
+    distance.set(initialVertex, 0);
+
+    while( queue.length > 0 ) {
+        let currentVertex = queue.shift();
+        visitedVertices.set( currentVertex, 1 );
+        let elementsToAdd = this.edges.get( currentVertex );
+
+        elementsToAdd.forEach( ( value ) => {
+            if( visitedVertices.get(value) != 1 ) {
+                queue.push(value);
+                distance.set(value, distance.get( currentVertex ) + 1 );
+            }
+        } );
+    }
+    return distance;
+}
+
 myGraph = new Graph();
 
 myGraph.addVertex("a");
@@ -93,8 +114,10 @@ myGraph.addEdge("c","d");
 //     console.log(vertex);
 // } )
 
-myGraph.bfs( "a", (vertex) => {
-    console.log(vertex);
-} )
+// myGraph.bfs( "a", (vertex) => {
+//     console.log(vertex);
+// } )
 
-myGraph.print();
+// myGraph.print();
+
+console.log( myGraph.shortestPathDistance( "a" ) );
