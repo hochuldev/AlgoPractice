@@ -54,15 +54,34 @@ Graph.prototype.dfs = function( initialVertex, action ) {
     this.dfsImplementation( initialVertex, visitedVertices, action );
 }
 
+Graph.prototype.bfs = function( initialVertex, action ) {
+    const queue = [ initialVertex ];
+    const visitedVertices = new Map();
+
+    while( queue.length > 0 ) {
+        let currentVertex = queue.shift();
+        visitedVertices.set( currentVertex, 1 );
+        action( currentVertex );
+        let elementsToAdd = this.edges.get( currentVertex );
+
+        elementsToAdd.forEach( ( value ) => {
+            if( visitedVertices.get(value) != 1 ) {
+                queue.push(value);
+            }
+        } );
+           
+    }
+}
+
 myGraph = new Graph();
 
 myGraph.addVertex("a");
 myGraph.addVertex("c");
 myGraph.addVertex("g");
 myGraph.addVertex("b");
+myGraph.addVertex("d");
 
 myGraph.addEdge( "g", "c" );
-
 myGraph.addEdge("a", "g");
 myGraph.addEdge("a", "b");
 myGraph.addEdge("b", "a");
@@ -70,6 +89,12 @@ myGraph.addEdge("c", "b");
 myGraph.addEdge("c","d");
 
 
-myGraph.dfs( "a", (vertex) => {
+// myGraph.dfs( "a", (vertex) => {
+//     console.log(vertex);
+// } )
+
+myGraph.bfs( "a", (vertex) => {
     console.log(vertex);
 } )
+
+myGraph.print();
