@@ -21,7 +21,7 @@ function solution(name){
     possibleIndices.push(i);
   }
   possibleIndices = createPossibleIndices(name, possibleIndices);
-  solutionImplementation(name, 0, possibleIndices);
+  return solutionImplementation(name, 0, possibleIndices);
 }
 
 function calcNextIndex(name, currentIndex, possibleIndices, direction){
