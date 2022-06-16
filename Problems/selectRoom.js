@@ -25,6 +25,12 @@ A = [[1], [2, 5], [7, 10, 1], [9, 4, 4, 5]]
 최소 대기 시간
 */
 
+/*
+문제를 잘못 이해했다. 최상단에서 시작하여 이동할 때만, 대각선 아래 방향으로 이동할 수 있고, 다른 경우에는 모든 문을 사용 가능함을 알 수 있다.
+이것 때문에, 4번째 테스트 케이스를 실패했던것.
+TODO: 솔루션 함수를 갈아 엎어서, 모든 테스트 케이스를 통과하도록 수정하자.
+*/
+
 function solution(A) {
   let hasEscaped = false;
   let currentPosition = [0, 0];
@@ -69,4 +75,17 @@ function calcTime(A, currentPosition, direction) {
   }
 }
 
-console.log(solution([[1], [2, 5], [7, 10, 1], [9, 4, 4, 5]]));
+let A = [[1], [2, 5], [7, 10, 1], [9, 4, 4, 5]];
+console.log(solution(A));
+
+A = [[1]];
+console.log(solution(A));
+
+A = [[1], [2, 1], [1, 10, 1], [9, 1, 1, 5], [1, 5, 0, 3, 5]];
+console.log(solution(A));
+
+A = [[1], [2, 3], [4, 5, 6], [7, 8, 9, 10]];
+console.log(solution(A));
+
+A = [[10], [8, 9], [7, 6, 5], [4, 3, 2, 1]];
+console.log(solution(A));
